@@ -4,4 +4,6 @@ channels:
   - https://repo.anaconda.com/pkgs/main
   - https://repo.anaconda.com/pkgs/r
 dependencies:
-  - neuron=7.6.7
+  - neuron=7.5.0
+  - matplotlib
+prefix: /home/srsebwsl/anaconda3/envs/neuron2018
