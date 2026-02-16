@@ -46,7 +46,7 @@ max_dlmn = [1.75, 2, 1.75]
 
 param1 = 'g_gap'
 param2s = ['gnatbar', 'gkbar', 'gleak']
-fig1 = plt.figure()
+fig1 = plt.figure(figsize=(15, 10))  # Width, height in inches
 
 ii = 1
 for p2 in param2s:
@@ -57,14 +57,14 @@ for p2 in param2s:
     y_young = g.params[param1]
     y_old = old_g_gap
     
-    x_young = (double(len(ranges[param2])) - 1.) * (x_young - ranges[param2][0]) / (ranges[param2][-1] - ranges[param2][0])
-    y_young = (double(len(ranges[param1])) - 1.) * (y_young - ranges[param1][0]) / (ranges[param1][-1] - ranges[param1][0])
-    y_old = (double(len(ranges[param1])) - 1.) * (y_old - ranges[param1][0]) / (ranges[param1][-1] - ranges[param1][0])
+    x_young = (np.double(len(ranges[param2])) - 1.) * (x_young - ranges[param2][0]) / (ranges[param2][-1] - ranges[param2][0])
+    y_young = (np.double(len(ranges[param1])) - 1.) * (y_young - ranges[param1][0]) / (ranges[param1][-1] - ranges[param1][0])
+    y_old = (np.double(len(ranges[param1])) - 1.) * (y_old - ranges[param1][0]) / (ranges[param1][-1] - ranges[param1][0])
     
     
     delay_dict = g.param_mesh(param1, ranges[param1], param2, ranges[param2])
-    delay_dict['DLMn_delays'][delay_dict['DLMn_delays']==-1] = nan
-    delay_dict['TTMn_delays'][delay_dict['TTMn_delays']==-1] = nan
+    delay_dict['DLMn_delays'][delay_dict['DLMn_delays']==-1] = np.nan
+    delay_dict['TTMn_delays'][delay_dict['TTMn_delays']==-1] = np.nan
     
     
     tcks = np.linspace(np.min(delay_dict['TTMn_delays']), np.max(delay_dict['TTMn_delays']), 20)
@@ -107,4 +107,7 @@ for p2 in param2s:
     plt.scatter([x_young], [y_young])
     plt.scatter([x_young], [y_old])
 
+
     ii += 1
+plt.tight_layout()
+plt.savefig('gfs_param_scan_conductances_' + param2 + '.png')

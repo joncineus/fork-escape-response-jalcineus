@@ -1,0 +1,25 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VS Code settings
+.vscode/
+
+# Generated figures (optional - remove if you want to track them)
+figures/*
+!figures/.gitkeep
+
+# NEURON compiled mechanisms
+channels/x86_64/
+*.o
+*.lo
+*.la
+.libs/
+
+# Other common patterns
+*.swp
+*.swo
+*~
+.DS_Store
