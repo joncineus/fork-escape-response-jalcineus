@@ -23,3 +23,6 @@ channels/x86_64/
 *.swo
 *~
 .DS_Store
+
+# Rune file that was created
+rune/
